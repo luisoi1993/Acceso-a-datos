@@ -1,0 +1,157 @@
+#1. Empezamos fuerte. Implementa un programa que muestre los números primos
+#comprendidos entre 1 y 50.
+#Ayuda:
+#Vamos a instalar una librería que nos lo facilita. Seguramente tengas que instalarla:
+
+#pip install sympy
+
+#Esta librería te facilita si un número es primo o no lo es.
+
+ 
+from sympy import isprime
+
+for num in range(1, 51):
+    if isprime(num):
+        print(num)
+
+
+#2. Realiza un programa que calcule la suma de los dígitos de un número entero
+#ingresado por el usuario. Es decir, el usuario introduce por ejemplo el 123 por teclado, y
+#la salida deberá ser 1+2+3=6
+
+numero = int(input("Digite el numero: "))
+suma = int(0)
+if numero < 10:
+    print("La suma del numero es: ",numero)
+else:
+    cifras = [int(digito) for digito in str (numero)]
+    for i in range(len(cifras)):
+        suma = suma + cifras[i] 
+
+    print("El resultado de la suma de los numeros es: ",suma)
+
+
+#3. Realiza un programa que cuente el número de vocales que hay en una cadena de
+#texto ingresada por el usuario.
+
+contador = int(0)
+frase = str(input("Digite una frase: "))
+letras = [letra for letra in frase]
+
+for i in range(len(letras)):
+    if letras[i].lower() in "aeiou":
+        contador += 1
+
+print("El numero de letras es: ",contador)
+
+
+#4. Crea un programa que determine si una palabra es un palíndromo.
+
+palabra = str(input("Digite una palabra: "))
+letras = [letra for letra in palabra]
+letrasReves = [len(letras)]
+contador = int(0)
+for i in range(len(letras) -1, -1, -1):
+    letrasReves[contador]=letras[i]
+    contador +=1
+
+palabraReves = ''.join(letras)
+
+if palabra.lower() == palabraReves.lower():
+    print("La palabra es palindroma: ")
+else:
+    print("La palabra no es palindroma: ")
+
+
+#5.Sin asustarte, escribe un programa que encuentre el máximo común divisor (MCD) de
+#dos números ingresados por el usuario.
+
+def calcular_mcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+num1 = int(input("Ingresa el primer número: "))
+num2 = int(input("Ingresa el segundo número: "))
+
+mcd = calcular_mcd(num1, num2)
+
+print(f"El MCD de {num1} y {num2} es: {mcd}")
+
+
+#6.Realiza un programa que simule el juego de "Piedra, Papel o Tijeras" contra el
+#ordenador.
+
+import random
+
+def jugar():
+    opciones = ['piedra', 'papel', 'tijeras']
+    computadora = random.choice(opciones)
+
+    jugador = input("Elige piedra, papel o tijeras: ").lower()
+
+    print(f"Computadora eligió: {computadora}")
+
+    if jugador == computadora:
+        print("¡Es un empate!")
+    elif (jugador == 'piedra' and computadora == 'tijeras') or \
+         (jugador == 'papel' and computadora == 'piedra') or \
+         (jugador == 'tijeras' and computadora == 'papel'):
+        print("¡Ganaste!")
+    else:
+        print("¡Perdiste!")
+
+jugar()
+
+
+#8. Juego de la patata caliente. Si has visto el Grand Prix este verano sabrás más o menos
+#de qué se trata, en caso contrario, te lo explico.
+
+import random
+import time
+
+def juego_patata_caliente():
+    tiempo_limite = random.randint(8, 15)
+    numero_secreto = random.randint(1, 100)
+    
+    print(f"Tienes {tiempo_limite} segundos para adivinar el número entre 1 y 100.")
+    
+    tiempo_inicio = time.time()
+    
+    while True:
+        try:
+            adivina = int(input("Adivina el número: "))
+        except ValueError:
+            print("Introduce un número válido.")
+            continue
+
+        tiempo_actual = time.time()
+        if tiempo_actual - tiempo_inicio > tiempo_limite:
+            print(f"Se acabó el tiempo. El número era {numero_secreto}.")
+            break
+        
+        if adivina < numero_secreto:
+            print("El número es mayor.")
+        elif adivina > numero_secreto:
+            print("El número es menor.")
+        else:
+            print("¡Felicidades! Has adivinado el número.")
+            break
+
+juego_patata_caliente()
+
+#9Para terminar, volvemos al ejercicio número 1, pero esta vez sin librería que nos lo
+#facilite.
+
+def es_primo(numero):
+    if numero < 2:
+        return False
+    for i in range(2, int(numero**0.5) + 1):
+        if numero % i == 0:
+            return False
+    return True
+
+for num in range(1, 51):
+    if es_primo(num):
+        print(num)
+

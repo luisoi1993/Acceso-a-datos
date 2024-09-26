@@ -1,0 +1,126 @@
+#1. Escribe un programa que calcule la suma de los 10 primeros números.
+#Ayuda:
+#En los bucles for, se puede definir un rango, el cual es una secuencia cerrada de
+#números. Puedes generar un rango utilizando la función range().
+#Ejemplo:
+#for numero in range(1, 6): # Esto generará números del 1 al 5
+#print(numero)
+
+suma = 0
+for numero in range(1, 10):
+    suma = suma + numero
+
+print("la suma de los diez primeros numeros es : ",suma)
+
+
+#2. Crea un algoritmo que calcule el factorial de un número introducido por el
+#usuario.
+#Ayuda:
+#Factorial (n!) de un número es el resultado de multiplicar ese número por todos
+#los números inferiores hasta llegar al 1.
+#n!(3)=3*2*1=6
+#n!(5)=5*4*3*2*1=120
+
+factorial = int(input("Ingresa el número: "))
+
+for numero in range(factorial - 1, 0, -1):
+    factorial *= numero
+
+print(factorial)
+
+
+#3. Escribe un algoritmo que sume los números pares del 1 al 100.
+
+suma = 0
+for numero in range(1, 101):  
+    if numero % 2 == 0:
+        suma = suma + numero
+
+print("La suma de los numeros pares del 1 al 100 es: ",suma)
+
+
+#4. Escribe un programa que calcule el área de un triángulo dados su base y altura
+#con precisión de 2 decimales.
+#Ayuda:
+#Puedes limitar el número de decimales de varias formas:
+#\ round
+#round(variable,no de decimales)
+#print(round(numero, 2)
+#\ Format
+#print("{:.2f}".format(numero))
+#\ f-string
+#print(f"{numero:.2f}")
+
+base = float(input("Ingresa la base del triangulo: "))
+altura = float(input("Ingresa la altura del triangulo: "))
+resultado = (base * altura)/2
+print("El area del triangulo es: ",round(resultado, 2))
+
+
+#5. Realiza un programa que muestre los números del 1 al 100, pero que reemplace
+#los múltiplos de 3 por "Triplete" y los múltiplos de 5 por "Cinquillo".
+
+for numero in range(1, 101):
+    if numero % 3 == 0 and numero % 5 == 0:
+        print("Triplete y Cinquillo")
+    elif numero % 3 == 0:
+        print("Triplete")
+    elif numero % 5 == 0:
+        print("Cinquillo")
+    else:
+        print(numero)
+
+
+#6. Crea un programa que simule un juego de adivinanza, donde el usuario debe
+#adivinar un número aleatorio generado por la computadora.
+#Input: número por teclado
+#Output: Indicar si el número introducido es mayor o menor que el aleatorio.
+#Import random #investiga sobre el funcionamiento de esta librería.
+
+import random
+numeroMaximo = int(input("Digite el numero maximo: "))
+numeroAleatorio = random.randint(1, numeroMaximo)
+print("El numero aleatorio es: ",numeroAleatorio)
+
+
+#7. Escribe un programa que calcule el área de un círculo dado su radio.
+
+
+radio = float(input("Digite el valor del radio: "))
+pi = 3.14
+area = pi * (radio ** 2)
+print("El valor del area es: ",area)
+
+
+#8. Implementa un programa que genere la tabla de multiplicar de un número
+#ingresado por el usuario.
+
+numero = int(input("Digite el numero: "))
+
+
+for num in range (1,11):
+    resultado = numero * num
+    print(numero," * ",num," = ",resultado)
+
+
+#9. Realiza un programa que sume los números impares del 1 al 100.
+
+suma = 0;
+for numero in range(1,101):
+    if numero % 2 !=0:
+        suma = suma + numero
+
+print("El resultado de la suma de los cien primeros numeros impares es: ",suma)
+
+
+#10. Crea un programa que cuente cuántas veces aparece una letra específica en
+#una cadena de texto ingresada por el usuario.
+
+
+entrada = str(input("Digite la cadena de texto: ")) # Cadena donde se busca la letra
+cuentalaletra = str("e") # La letra que queremos contar
+contador = int(0) # Inicializamos el contador
+for letra in entrada:
+    if letra == cuentalaletra:
+        contador += 1 # Sumamos uno al contador si la letra coincide
+print(cuentalaletra, ":", contador) # Imprimimos el resultado final

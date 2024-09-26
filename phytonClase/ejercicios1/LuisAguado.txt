@@ -1,0 +1,167 @@
+2. Diferencia entre paradigma imperativo y declarativo 
+
+El paradigma imperativo se enfoca en cómo se deben hacer las cosas, detallando los pasos específicos que el programa debe seguir para lograr el resultado. 
+Es como decirle a alguien exactamente qué hacer paso a paso.
+
+El paradigma declarativo se centra en qué es lo que se quiere lograr sin especificar cómo hacerlo. 
+Es como decir el objetivo final y dejar que el sistema decida cómo lograrlo.
+
+Imperativo: "Haz esto, luego esto, luego esto". Declarativo: "Quiero este resultado, encárgate tú de hacerlo".
+
+3. Paradigma Imperativo
+
+El paradigma imperativo es un estilo de programación donde le dices al programa cómo realizar una tarea, paso a paso. 
+Es como darle órdenes específicas al computador sobre qué hacer en cada momento. El enfoque se basa en secuencias de instrucciones, 
+bucles y cambios de estado (variables que cambian).
+
+Un ejemplo común en este paradigma es un bucle que recorre una lista y modifica sus elementos. Es el paradigma típico de lenguajes
+ como Python, Java, o C, donde defines cada acción que debe tomar el programa.
+
+
+4. Paradigma Orientado a Objetos
+
+El paradigma orientado a objetos (POO) se basa en la idea de organizar el código en objetos, 
+que son instancias de clases. Una clase define características y comportamientos comunes (atributos y métodos) que los objetos pueden tener.
+La POO permite crear programas más fáciles de entender, mantener y reutilizar. Además, utiliza conceptos clave como la herencia 
+(compartir comportamiento), el polimorfismo (métodos que funcionan de diferentes formas) y el encapsulamiento (ocultar detalles internos). 
+Lenguajes como Python, Java y C++ lo usan.
+
+5. Tipado Dinámico
+
+El tipado dinámico significa que las variables no tienen un tipo de dato fijo en el momento de su declaración.
+ El tipo de dato se asigna automáticamente en tiempo de ejecución, según el valor que se les asigne. 
+Por ejemplo, en Python puedes asignar un número a una variable y luego cambiarlo por una cadena sin problemas. 
+Esto hace que el código sea más flexible, pero también puede generar errores si no se tiene cuidado con los tipos en el flujo del programa
+
+
+6.2. Calculadora de área de un cuadrado: Crea un programa que calcule el área de
+un cuadrado cuando el usuario ingresa la longitud de un lado.
+
+longitud = float(input("Ingresa la longitud de uno de los lados :"))
+final = longitud * longitud
+print("El area del cuadrado es: ",final)
+
+
+
+6.3. Conversión de temperatura: Escribe un programa que convierta grados Celsius a
+grados Fahrenheit. Pide al usuario ingresar la temperatura en Celsius.
+Ayuda: fahrenheit = (celsius 9/5) + 32
+
+grados = float(input("Ingresa los grados:"))
+celsius = (grados - 32) * 5 / 9;
+print("El resultado en grados celsius: ",celsius)
+
+
+6.4. Calculadora de IMC (Índice de Masa Corporal): Desarrolla un programa que
+calcule el IMC a partir del peso y la altura ingresados por el usuario.
+Ayuda: imc = peso / (altura^2)
+
+peso =float(input("Ingresa el peso: "))
+altura = float(input("Ingresa la altura: "))
+final = peso/ (altura * altura)
+print("El indice de masa corporal es: ",final)
+
+6.5. Concatenación de cadenas: Crea un programa que tome dos cadenas como
+entrada del usuario y las concatene en una sola cadena.
+
+cadena1 = input("Ingresa la primera cadena: ")
+cadena2 = input("Ingresa la segunda cadena: ")
+cadena3 = cadena1 + cadena2
+print(cadena3)
+
+
+6.6. Determinar el tipo de dato: Escribe un programa que determine el tipo de dato de
+una variable ingresada por el usuario.
+
+# Solicita al usuario que ingrese un valor
+entrada = input("Ingresa un valor: ")
+
+# Intentamos convertir la entrada a diferentes tipos y determinar cuál es el correcto
+try:
+    # Convertimos a entero
+    valor = int(entrada)
+    tipo_dato = "entero (int)"
+except ValueError:
+    try:
+        # Convertimos a flotante
+        valor = float(entrada)
+        tipo_dato = "decimal (float)"
+    except ValueError:
+        # Si no es ni entero ni decimal, asumimos que es una cadena
+        valor = entrada
+        tipo_dato = "cadena (str)"
+
+# Imprimimos el tipo de dato
+print(f"El tipo de dato de la entrada es: {tipo_dato}")
+
+
+6.7. Calcular el promedio de tres números: Desarrolla un programa que calcule el
+promedio de tres números ingresados por el usuario.
+Ayuda: promedio = algo/3
+
+numero1 = int(input("Digite el primer numero: "))
+numero2 = int(input("Digite el segundo numero: "))
+numero3 = int(input("Digite el tercer numero: "))
+numeroFinal = (numero1+numero2+numero3)/3
+print("El promedio de los tres numeros es :",numeroFinal)
+
+
+6.8. Área de un triángulo: Crea un programa que calcule el área de un triángulo a
+partir de la base y la altura ingresadas por el usuario.
+Ayuda: area = (base * altura) / 2
+
+base = float(input("Digite la base: "))
+altura = float(input("Digite la altura: "))
+area = (base * altura) / 2
+print("El area del triangulo es: ",area)
+
+
+6.9. Edad en el futuro: Escribe un programa que pida la edad actual del usuario y un
+número de años, y calcule la edad que tendrá el usuario en ese futuro número de
+años.
+
+edad = int(input("Digita tu edad: "))
+tiempo =int(input("Digita un numero de años: "))
+edadFinal = edad + tiempo
+print("Cuando pasen ",tiempo," años, tendras estos años: ",edadFinal)
+
+
+#6.10. Área de un rectángulo: Crea un programa que calcule el área de un
+#rectángulo a partir de su longitud y ancho ingresados por el usuario.
+
+longitud = float(input("Digite la longitud del rectangulo: "))
+ancho = float(input("Digite el acho del rectangulo: "))
+area = longitud * ancho 
+print("El area del rectangulo es: ",area)
+
+
+#6.11. Días a segundos: Crea un programa que convierta un número de días
+#ingresado por el usuario a segundos.
+dias = int(input("Digite el numero de dias: "))
+segundos = dias * 86400 
+print("En esta cantidad de dias",dias," hay esta cantidad de segundos: ",segundos)
+
+
+#6.12. Raíz cuadrada: Desarrolla un programa que calcule la raíz cuadrada de un
+#número ingresado por el usuario.
+#Ayuda: importamos la librería de matemáticas que nos resuelve el problema de
+#realizar una raíz cuadrada. Ya tendremos tiempo de hacerlo sin la librería.
+
+import math
+numero = float(input("Ingresa un número para calcular su raíz cuadrada: "))
+raiz_cuadrada = math.sqrt(numero)
+print(f"La raíz cuadrada de {numero} es {raiz_cuadrada}.")
+
+
+
+#6.13. Conversión de moneda: Escribe un programa que convierta una cantidad de
+#dólares a euros. El tipo de cambio debe ser ingresado por el usuario.
+
+
+dolares = float(input("Ingresa la cantidad en dólares: "))
+tipo_cambio = float(input("Ingresa el tipo de cambio (dólares a euros): "))
+euros = dolares * tipo_cambio
+print(f"{dolares} dólares son {euros} euros con un tipo de cambio de {tipo_cambio}.")
+
+
+
