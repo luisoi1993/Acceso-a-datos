@@ -1,0 +1,145 @@
+#1. Tabla de multiplicar:
+#Escribe un programa en python que imprima todas las tablas de multiplicar del 1 al 10.
+#Será importante que se presenten de forma clara y ordenada.
+
+for i in range(1, 11):
+    print(f"Tabla del {i}:")
+    for j in range(1, 11):
+        numero = i * j
+        print(f"{i} x {j} = {numero}")
+    print()  
+
+
+#2. Semi-triángulo de asteriscos: Crea un programa que dibuje un semi-triángulo de
+#asteriscos. El usuario debe ingresar la altura por teclado.
+
+asterisco = "*"
+espacio = ""
+
+numero = int(input("Digite el número de asteriscos: "))
+
+for i in range(1, numero + 1):
+    espacio += asterisco
+    print(espacio)
+
+#3. Patrón de números: Diseña un programa que imprima un patrón de números en forma
+#de cuadrado. Por ejemplo, si el usuario introduce por teclado el número 4, el patrón
+#debería ser:
+
+numeros = int(input("Digite el número: "))
+
+for i in range(numeros):
+    for j in range(1, numeros + 1):
+        print(j, end="")  # Imprime el número sin salto de línea
+    print()  
+
+#4a. Matriz de ceros: Escribe un programa que cree una matriz cuadrada de ceros de
+#tamaño nxn, donde es el número de elementos de cada fila y columna y será
+#especificado por el usuario (introducido por teclado).
+
+numero = int(input("Introduce el tamaño de la matriz : "))
+
+#crear una matri de 0 n x n
+matriz = [[0 for _ in range(numero)] for _ in range (numero)]
+
+for fila in matriz:
+    print(fila)  
+
+
+
+#4b. Modifica el ejemplo anterior (4a) para que en lugar de ceros, introduzca
+#automáticamente (NO por teclado) los números impares que correspondan.
+#Ejemplo: para la matriz cuadrada 2x2, sería:
+
+#13
+#57
+
+numero = int(input("Introduce el tamaño de la matriz : "))
+impar = int(1)
+
+#crear una matri de 0 n x n
+matriz = [[0 for _ in range(numero)] for _ in range (numero)]
+
+for i in range(numero):
+    for j in range(numero):
+        matriz[i][j] = impar
+        impar += 2
+
+for fila in matriz:
+    print(fila)
+
+
+#4c. Rellenando matrices. Amplía el ejercicio 4a de forma que el usuario no sólo decida
+#la dimensión de la matriz cuadrada sino que introduzca los datos (números enteros) por
+#teclado.
+
+numero = int(input("Introduce el tamaño de la matriz : "))
+
+
+#crear una matri de 0 n x n
+matriz = [[0 for _ in range(numero)] for _ in range (numero)]
+
+for i in range(numero):
+    for j in range(numero):
+        matriz[i][j] = input(f"Digite el valor de posicion [{i}] + [{j}]")
+    
+
+for fila in matriz:
+    print(fila)
+
+
+#5. Suma de matrices: amplía el ejercicio 4c con un programa que sume dos matrices
+#cuadradas con el mismo orden. Todos los datos de la suma son números enteros.
+#Os recuerdo que para sumar matrices es sumar los elementos que ocupan la misma
+#posición en ambas matrices.
+#Ejemplo: Matriz 1 Matriz 2 Matriz suma
+#01 56 0+5 1+6 5 7
+#+ = =
+#23 78 2+7 3+8 9 15
+
+numero = int(input("Introduce el tamaño de las matrices: "))
+
+# Crear las matrices con valores ingresados por el usuario
+matriz1 = [[int(input(f"Introduce el valor para la posición [{i}][{j}] de la Matriz 1: ")) for j in range(numero)] for i in range(numero)]
+matriz2 = [[int(input(f"Introduce el valor para la posición [{i}][{j}] de la Matriz 2: ")) for j in range(numero)] for i in range(numero)]
+
+#crear una matri de 0 n x n
+matriz_suma = [[0 for _ in range(numero)] for _ in range(numero)]
+
+
+for i in range(numero):
+    for j in range(numero):
+        matriz_suma[i][j] = matriz1[i][j] + matriz2[i][j]
+
+print("\nMatriz suma:")
+for fila in matriz_suma:
+    print(fila)
+
+#6. Cálculo de la suma de fila y columna en una matriz: Crea una matriz en la que cada
+#elemento sea la suma del número de fila y columna correspondiente. El usuario indicará
+#por teclado la dimensión de la matriz.
+#Ejemplo: para una matriz 2x2
+
+#01
+#12
+
+#Esto es por que en una matriz, las posiciones vienen dadas como un eje de coordenadas
+#de arriba a abajo y de izquierda a derecha (Ejemplo de matriz 2x2):
+
+#00 01
+#10 11
+
+numero = int(input("Introduce el tamaño de la matriz: "))
+
+# Crear la matriz donde cada elemento es la suma de su fila y columna
+matriz = [[i + j for j in range(numero)] for i in range(numero)]
+
+
+print("\nMatriz resultado:")
+for fila in matriz:
+    print(fila)
+
+
+
+
+
