@@ -12,12 +12,12 @@
 #00 01
 #10 11
 
-numero = int(input("Introduce el tamaño de la matriz: "))
+
+numero = int(input("Introduce el tamaño de la matriz: "))  # Pide el tamaño de la matriz
 
 # Crear la matriz donde cada elemento es la suma de su fila y columna
-matriz = [[i + j for j in range(numero)] for i in range(numero)]
+matriz = [[i + j for j in range(numero)] for i in range(numero)]  # Suma filas y columnas
 
-
-print("\nMatriz resultado:")
+print("\nMatriz resultado:")  # Muestra la matriz que se crea
 for fila in matriz:
-    print(fila)
+    print(fila)  # Imprime cada fila de la matriz

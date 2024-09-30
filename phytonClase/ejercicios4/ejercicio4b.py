@@ -5,16 +5,19 @@
 #13
 #57
 
-numero = int(input("Introduce el tamaño de la matriz : "))
-impar = int(1)
 
-#crear una matri de 0 n x n
-matriz = [[0 for _ in range(numero)] for _ in range (numero)]
+numero = int(input("Introduce el tamaño de la matriz: "))  # Pide el tamaño de la matriz
+impar = int(1)  # Empezamos con el primer número impar
 
+# Creamos una matri de ceros n x n
+matriz = [[0 for _ in range(numero)] for _ in range(numero)]  # Hacemos la matriz
+
+# Llenamos la matriz con números impares
 for i in range(numero):
     for j in range(numero):
-        matriz[i][j] = impar
-        impar += 2
+        matriz[i][j] = impar  # Ponemos el número impar en la posición
+        impar += 2  # Aumentamos para el siguiente impar
 
+# Mostramos la matriz fila por fila
 for fila in matriz:
-    print(fila)
+    print(fila)  # Imprime cada fila de la matriz

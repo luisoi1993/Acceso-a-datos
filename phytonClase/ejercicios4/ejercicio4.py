@@ -2,10 +2,11 @@
 #tamaño nxn, donde es el número de elementos de cada fila y columna y será
 #especificado por el usuario (introducido por teclado).
 
-numero = int(input("Introduce el tamaño de la matriz : "))
+numero = int(input("Introduce el tamaño de la matriz: "))  # Pide el tamaño de la matriz
 
-#crear una matri de 0 n x n
-matriz = [[0 for _ in range(numero)] for _ in range (numero)]
+# Creamos una matri de ceros n x n
+matriz = [[0 for _ in range(numero)] for _ in range(numero)]  # Hacemos la matriz
 
+# Mostramos la matriz fila por fila
 for fila in matriz:
-    print(fila)
+    print(fila)  # Imprime cada fila de la matriz

@@ -2,48 +2,63 @@
 #Escribe un programa en python que imprima todas las tablas de multiplicar del 1 al 10.
 #Será importante que se presenten de forma clara y ordenada.
 
-for i in range(1, 11):
-    print(f"Tabla del {i}:")
-    for j in range(1, 11):
-        numero = i * j
-        print(f"{i} x {j} = {numero}")
-    print()  
 
+for i in range(1, 11):
+    # Imprime el encabezado de la tabla
+    print(f"Tabla del {i}:")
+    
+    # Un bucle interno que va del 1 al 10, que representa los multiplicadores
+    for j in range(1, 11):
+        # Calcula el resultado de la multiplicación
+        numero = i * j
+        
+        # Imprime el resultado de la multiplicación en formato: "i x j = resultado"
+        print(f"{i} x {j} = {numero}")
+    
+    # Imprime una línea en blanco para separar las tablas
+    print()
 
 #2. Semi-triángulo de asteriscos: Crea un programa que dibuje un semi-triángulo de
 #asteriscos. El usuario debe ingresar la altura por teclado.
 
-asterisco = "*"
-espacio = ""
+asterisco = "*"  # este es el simbolo que vamos a usar
+espacio = ""  # aqui guardamos los asteriscos que vamos a ir agregando
 
+# le pedimos al usuario que diga cuántos asteriscos quiere
 numero = int(input("Digite el número de asteriscos: "))
 
+# empezamos un ciclo que va de 1 a la altura que puso el usuario
 for i in range(1, numero + 1):
-    espacio += asterisco
-    print(espacio)
+    espacio += asterisco  # vamos agregando asteriscos uno por uno
+    print(espacio)  # mostramos los asteriscos
+
 
 #3. Patrón de números: Diseña un programa que imprima un patrón de números en forma
 #de cuadrado. Por ejemplo, si el usuario introduce por teclado el número 4, el patrón
 #debería ser:
 
-numeros = int(input("Digite el número: "))
 
+numeros = int(input("Digite el número: "))  # pedimos un número al usuario
+
+# Empezamos el primer ciclo para las filas
 for i in range(numeros):
+    # Empezamos otro ciclo para los números de cada fila
     for j in range(1, numeros + 1):
-        print(j, end="")  # Imprime el número sin salto de línea
-    print()  
+        print(j, end="")  # Imprime el número sin saltar a la siguiente línea
+    print()  # Hace un salto de línea después de cada fila 
 
 #4a. Matriz de ceros: Escribe un programa que cree una matriz cuadrada de ceros de
 #tamaño nxn, donde es el número de elementos de cada fila y columna y será
 #especificado por el usuario (introducido por teclado).
 
-numero = int(input("Introduce el tamaño de la matriz : "))
+numero = int(input("Introduce el tamaño de la matriz: "))  # Pide el tamaño de la matriz
 
-#crear una matri de 0 n x n
-matriz = [[0 for _ in range(numero)] for _ in range (numero)]
+# Creamos una matri de ceros n x n
+matriz = [[0 for _ in range(numero)] for _ in range(numero)]  # Hacemos la matriz
 
+# Mostramos la matriz fila por fila
 for fila in matriz:
-    print(fila)  
+    print(fila)  # Imprime cada fila de la matriz
 
 
 
@@ -54,38 +69,41 @@ for fila in matriz:
 #13
 #57
 
-numero = int(input("Introduce el tamaño de la matriz : "))
-impar = int(1)
 
-#crear una matri de 0 n x n
-matriz = [[0 for _ in range(numero)] for _ in range (numero)]
+numero = int(input("Introduce el tamaño de la matriz: "))  # Pide el tamaño de la matriz
+impar = int(1)  # Empezamos con el primer número impar
 
+# Creamos una matri de ceros n x n
+matriz = [[0 for _ in range(numero)] for _ in range(numero)]  # Hacemos la matriz
+
+# Llenamos la matriz con números impares
 for i in range(numero):
     for j in range(numero):
-        matriz[i][j] = impar
-        impar += 2
+        matriz[i][j] = impar  # Ponemos el número impar en la posición
+        impar += 2  # Aumentamos para el siguiente impar
 
+# Mostramos la matriz fila por fila
 for fila in matriz:
-    print(fila)
+    print(fila)  # Imprime cada fila de la matriz
 
 
 #4c. Rellenando matrices. Amplía el ejercicio 4a de forma que el usuario no sólo decida
 #la dimensión de la matriz cuadrada sino que introduzca los datos (números enteros) por
 #teclado.
 
-numero = int(input("Introduce el tamaño de la matriz : "))
+numero = int(input("Introduce el tamaño de la matriz: "))  # Pide el tamaño de la matriz
 
+# Crear una matri de ceros n x n
+matriz = [[0 for _ in range(numero)] for _ in range(numero)]  # Hacemos la matriz
 
-#crear una matri de 0 n x n
-matriz = [[0 for _ in range(numero)] for _ in range (numero)]
-
+# Llenamos la matriz con los números que el usuario introduce
 for i in range(numero):
     for j in range(numero):
-        matriz[i][j] = input(f"Digite el valor de posicion [{i}] + [{j}]")
-    
+        matriz[i][j] = input(f"Digite el valor de posicion [{i}][{j}]: ")  # Pide el número para cada posición
 
+# Mostramos la matriz fila por fila
 for fila in matriz:
-    print(fila)
+    print(fila)  # Imprime cada fila de la matriz
 
 
 #5. Suma de matrices: amplía el ejercicio 4c con un programa que sume dos matrices
@@ -97,23 +115,24 @@ for fila in matriz:
 #+ = =
 #23 78 2+7 3+8 9 15
 
-numero = int(input("Introduce el tamaño de las matrices: "))
 
-# Crear las matrices con valores ingresados por el usuario
-matriz1 = [[int(input(f"Introduce el valor para la posición [{i}][{j}] de la Matriz 1: ")) for j in range(numero)] for i in range(numero)]
-matriz2 = [[int(input(f"Introduce el valor para la posición [{i}][{j}] de la Matriz 2: ")) for j in range(numero)] for i in range(numero)]
+numero = int(input("Introduce el tamaño de las matrices: "))  # Pide el tamaño de las matrices
 
-#crear una matri de 0 n x n
-matriz_suma = [[0 for _ in range(numero)] for _ in range(numero)]
+# Crear las matrices con los valores que pone el usuario
+matriz1 = [[int(input(f"Introduce el valor para la posición [{i}][{j}] de la Matriz 1: ")) for j in range(numero)] for i in range(numero)]  # Matriz 1
+matriz2 = [[int(input(f"Introduce el valor para la posición [{i}][{j}] de la Matriz 2: ")) for j in range(numero)] for i in range(numero)]  # Matriz 2
 
+# Crear una matri de ceros para la suma
+matriz_suma = [[0 for _ in range(numero)] for _ in range(numero)]  # Matriz de suma
 
+# Sumar las dos matrices
 for i in range(numero):
     for j in range(numero):
-        matriz_suma[i][j] = matriz1[i][j] + matriz2[i][j]
+        matriz_suma[i][j] = matriz1[i][j] + matriz2[i][j]  # Sumar cada posición
 
-print("\nMatriz suma:")
+print("\nMatriz suma:")  # Imprime el resultado de la suma
 for fila in matriz_suma:
-    print(fila)
+    print(fila)  # Muestra cada fila de la matriz suma
 
 #6. Cálculo de la suma de fila y columna en una matriz: Crea una matriz en la que cada
 #elemento sea la suma del número de fila y columna correspondiente. El usuario indicará
@@ -129,17 +148,131 @@ for fila in matriz_suma:
 #00 01
 #10 11
 
-numero = int(input("Introduce el tamaño de la matriz: "))
+
+numero = int(input("Introduce el tamaño de la matriz: "))  # Pide el tamaño de la matriz
 
 # Crear la matriz donde cada elemento es la suma de su fila y columna
-matriz = [[i + j for j in range(numero)] for i in range(numero)]
+matriz = [[i + j for j in range(numero)] for i in range(numero)]  # Suma filas y columnas
 
-
-print("\nMatriz resultado:")
+print("\nMatriz resultado:")  # Muestra la matriz que se crea
 for fila in matriz:
-    print(fila)
+    print(fila)  # Imprime cada fila de la matriz
+
+#7. Dibujo de un rombo: Diseña un programa que dibuje un rombo equilibrado de
+#asteriscos. El usuario debe ingresar la altura del rombo, siendo esta siempre impar. Si
+#introduce una altura par, deberá indicar por pantalla que vuelva a introducir la altura
+#(rombos con altura par...no son rombos equilibrados).
+
+
+def dibujar_rombo(altura):
+    # Verifica si la altura es par
+    if altura % 2 == 0:
+        print("Por favor, ingresa una altura impar.")  # Avísale que la altura no está bien
+        return  # Sale de la función si la altura es par
+    
+    mitad = altura // 2  # Encuentra la mitad de la altura
+
+    # Parte de arriba del rombo
+    for i in range(mitad + 1):  # Dibuja la parte de arriba
+        espacios = mitad - i  # Cantidad de espacios antes de los asteriscos
+        asteriscos = 2 * i + 1  # Cantidad de asteriscos en cada línea
+        print(" " * espacios + "*" * asteriscos)  # Imprime los espacios y los asteriscos
+
+    # Parte de abajo del rombo
+    for i in range(mitad - 1, -1, -1):  # Dibuja la parte de abajo
+        espacios = mitad - i  # Espacios para la línea
+        asteriscos = 2 * i + 1  # Asteriscos en la línea
+        print(" " * espacios + "*" * asteriscos)  # Imprime los espacios y los asteriscos
+
+
+while True:  # Bucle para pedir la altura hasta que sea impar
+    altura = int(input("Introduce la altura del rombo (impar): "))  # Pide la altura
+    if altura % 2 != 0:  # Verifica si la altura es impar
+        break  # Sale del bucle si es impar
+    print("La altura debe ser impar. Inténtalo de nuevo.")  # Si es par, pide que lo intente otra vez
+
+dibujar_rombo(altura)  # Llama a la función para dibujar el rombo
+
+
+#8. Dada la siguiente matriz:
+#[1, 2, 3, 4, 5],
+#[6, 7, 8, 9, 10],
+#[11, 12, 13, 14, 15],
+#[16, 17, 18, 19, 20],
+#[21, 22, 23, 24, 25]
+
+#implementa un algoritmo en python que realice la suma de sus diagonales, es decir,
+#que sume (1+7+13+19+20)+(21+17+13+9+5). Si te fijas el 13 se repite, puedes dar la
+#opción que el usuario decida si se da el resultado repitiendo el elemento central o no.
+# Definimos la matriz
 
 
 
+# Definimos la matriz
+matriz = [
+    [1, 2, 3, 4, 5],
+    [6, 7, 8, 9, 10],
+    [11, 12, 13, 14, 15],
+    [16, 17, 18, 19, 20],
+    [21, 22, 23, 24, 25]
+]
 
+n = len(matriz)  # Tamaño de la matriz
+suma_principal = 0  # Suma de la diagonal principal
+suma_secundaria = 0  # Suma de la diagonal secundaria
+
+# Bucle para sumar las diagonales
+for i in range(n):
+    suma_principal += matriz[i][i]  # Suma diagonal principal
+    suma_secundaria += matriz[i][n - 1 - i]  # Suma diagonal secundaria
+
+# Pregunta si se incluye el valor del centro
+opcion = input("¿Deseas incluir el valor central dos veces en la suma? (sí/no): ").strip().lower()
+
+# Si no se quiere incluir y la matriz es impar, quita el valor central
+if opcion == "no" and n % 2 != 0:
+    valor_central = matriz[n // 2][n // 2]  # Valor central de la matriz
+    suma_secundaria -= valor_central   # Resta el valor central de la suma secundaria
+
+# Calcula el resultado final
+resultado = suma_principal + suma_secundaria
+print(f"La suma de las diagonales es: {resultado}")  # Imprime el resultado
+
+
+#9. Igual que el ejercicio 8 pero el usuario introduce los valores por teclado.
+
+# Pide al usuario el tamaño de la matriz
+numero = int(input("Introduce el tamaño de la matriz (n para n x n): "))
+
+# Crear la matriz vacía
+matriz = []
+
+# Llenar la matriz con valores que ingresa el usuario
+for i in range(numero):
+    fila = []  # Fila vacía
+    for j in range(numero):
+        valor = int(input(f"Introduce el valor para la posición [{i}][{j}]: "))  # Valor de la posición
+        fila.append(valor)  # Agrega el valor a la fila
+    matriz.append(fila)  # Agrega la fila a la matriz
+
+n = len(matriz)  # Tamaño de la matriz
+suma_principal = 0  # Suma de la diagonal principal
+suma_secundaria = 0  # Suma de la diagonal secundaria
+
+# Bucle para sumar las diagonales
+for i in range(n):
+    suma_principal += matriz[i][i]  # Suma diagonal principal
+    suma_secundaria += matriz[i][n - 1 - i]  # Suma diagonal secundaria
+
+# Pregunta si se incluye el valor del centro
+opcion = input("¿Deseas incluir el valor central dos veces en la suma? (sí/no): ").strip().lower()
+
+# Si no se quiere incluir y la matriz es impar, quita el valor central
+if opcion == "no" and n % 2 != 0:
+    valor_central = matriz[n // 2][n // 2]  # Valor central de la matriz
+    suma_secundaria -= valor_central  # Resta el valor central de la suma secundaria
+
+# Calcula el resultado final
+resultado = suma_principal + suma_secundaria
+print(f"La suma de las diagonales es: {resultado}")  # Imprime el resultado
 
