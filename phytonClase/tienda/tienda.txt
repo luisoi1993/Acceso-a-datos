@@ -1,0 +1,177 @@
+def mostrar_productos(productos):
+    # Esta funcion muestra los productos disponibles en la tienda
+    if not productos:  # Si no hay productos
+        print("No hay productos disponibles en la tienda.")
+    else:
+        print("\nLista de productos disponibles:")
+        for producto in productos:  # Para cada producto
+            # Mostramos ID, nombre, cantidad y precio
+            print(f"ID: {producto[0]}, Nombre: {producto[1]}, Cantidad: {producto[2]}, Precio: {producto[3]:.2f} €")
+    print("\n")  # Espacio para que se vea mejor
+
+def agregar_producto(productos, historial):
+    # Esta funcion agrega un producto nuevo a la tienda
+    if len(productos) >= 8:  # Si ya hay 8 productos
+        print("Error: No se pueden añadir más de 8 productos en la tienda.")
+        return  # Salimos de la funcion
+
+    # Pedimos info del producto
+    id_producto = input("Introduce el ID del producto: ")
+    nombre = input("Introduce el nombre del producto: ")
+    cantidad = int(input("Introduce la cantidad del producto: "))
+    precio = float(input("Introduce el precio del producto: "))
+
+    # Validamos que cantidad y precio sean positivos
+    if cantidad < 0 or precio < 0:
+        print("La cantidad y el precio deben ser valores positivos.")
+        return
+
+    for producto in productos:  # Buscamos si ya existe
+        if producto[0] == id_producto:  # Si el ID ya existe
+            producto[2] += cantidad  # Actualiza la cantidad
+            producto[3] = precio  # Actualiza el precio
+            print(f"Producto '{nombre}' actualizado en la tienda.")
+            return  # Salimos de la funcion
+
+    # Si el producto no existe, se agrega
+    productos.append([id_producto, nombre, cantidad, precio])  # Añadimos el producto
+    historial.append([id_producto, nombre, [precio]])  # Agregar a historial
+    print(f"Producto '{nombre}' añadido a la tienda.")
+
+def eliminar_producto(productos, historial):
+    # Esta funcion elimina un producto de la tienda
+    nombre = input("Introduce el nombre del producto a eliminar: ")
+    for producto in productos:  # Buscamos el producto
+        if producto[1] == nombre:  # Si lo encontramos
+            historial_item = next((h for h in historial if h[0] == producto[0]), None)  # Buscamos en historial
+            if historial_item:  # Si hay un historial
+                historial_item[2].append(producto[3])  # Añadir el precio al historial
+            productos.remove(producto)  # Lo eliminamos de la lista
+            print(f"Producto '{nombre}' eliminado de la tienda.")
+            return  # Salimos de la funcion
+    print(f"El producto '{nombre}' no se encuentra en la tienda.")
+
+def comprar_producto(productos, carrito):
+    # Esta funcion permite comprar productos
+    nombre = input("Introduce el nombre del producto que deseas comprar: ")
+    cantidad = int(input("Introduce la cantidad que deseas comprar: "))
+
+    for producto in productos:  # Buscamos el producto
+        if producto[1] == nombre:
+            if producto[2] >= cantidad:  # Si hay suficiente cantidad
+                producto[2] -= cantidad  # Actualiza el inventario
+                carrito.append([producto[1], cantidad, producto[3]])  # Agrega al carrito
+                print(f"Producto '{nombre}' añadido al carrito.")
+                return
+            else:  # Si no hay suficiente
+                print(f"No hay suficiente cantidad de '{nombre}'. Disponible: {producto[2]}.")
+                return
+    print(f"El producto '{nombre}' no se encuentra en la tienda.")  # Si no se encontró
+
+def ver_carrito(carrito):
+    # Esta funcion muestra los productos en el carrito
+    if not carrito:  # Si el carrito está vacío
+        print("El carrito está vacío.")
+    else:
+        print("\nProductos en el carrito:")
+        total = 0  # Para calcular el total
+        for item in carrito:  # Para cada producto en el carrito
+            subtotal = item[1] * item[2]  # Calculamos el subtotal
+            print(f"Nombre: {item[0]}, Cantidad: {item[1]}, Precio: {item[2]:.2f} €, Subtotal: {subtotal:.2f} €")
+            total += subtotal  # Sumamos al total
+        print(f"Total en el carrito: {total:.2f} €\n")  # Mostramos el total
+
+def finalizar_compra(carrito):
+    # Esta funcion finaliza la compra
+    if not carrito:  # Si no hay nada en el carrito
+        print("No hay productos en el carrito para finalizar la compra.")
+        return
+    total = sum(item[1] * item[2] for item in carrito)  # Calculamos el total
+    print(f"Gracias por tu compra. Total a pagar: {total:.2f} €")
+    carrito.clear()  # Vaciar el carrito
+
+def cancelar_compra(carrito):
+    # Esta funcion cancela la compra
+    if not carrito:  # Si el carrito está vacío
+        print("No hay productos en el carrito para cancelar.")
+        return
+    carrito.clear()  # Vaciar el carrito
+    print("Compra cancelada. El carrito está vacío.")
+
+def menu_cliente(productos, carrito):
+    # Este es el menu para el cliente
+    while True:
+        print("1. Mostrar productos disponibles")
+        print("2. Comprar productos")
+        print("3. Ver carrito")
+        print("4. Finalizar compra")
+        print("5. Cancelar compra")
+        print("6. Cambiar a vendedor")
+        print("7. Salir")
+        opcion = input("Selecciona una opción: ")
+
+        if opcion == '1':
+            mostrar_productos(productos)  # Muestra los productos
+        elif opcion == '2':
+            comprar_producto(productos, carrito)  # Comprar un producto
+        elif opcion == '3':
+            ver_carrito(carrito)  # Ver el carrito
+        elif opcion == '4':
+            finalizar_compra(carrito)  # Finalizar la compra
+        elif opcion == '5':
+            cancelar_compra(carrito)  # Cancelar la compra
+        elif opcion == '6':
+            return  # Volver al menú principal
+        elif opcion == '7':
+            print("Saliendo del programa.")
+            exit()  # Salir del programa
+        else:
+            print("Opción no válida. Inténtalo de nuevo.")
+
+def menu_vendedor(productos, historial):
+    # Este es el menu para el vendedor
+    while True:
+        print("1. Mostrar productos disponibles")
+        print("2. Agregar producto")
+        print("3. Eliminar producto")
+        print("4. Cambiar a cliente")
+        print("5. Salir")
+        opcion = input("Selecciona una opción: ")
+
+        if opcion == '1':
+            mostrar_productos(productos)  # Muestra los productos
+        elif opcion == '2':
+            agregar_producto(productos, historial)  # Agregar producto
+        elif opcion == '3':
+            eliminar_producto(productos, historial)  # Eliminar producto
+        elif opcion == '4':
+            return  # Volver al menú principal
+        elif opcion == '5':
+            print("Saliendo del programa.")
+            exit()  # Salir del programa
+        else:
+            print("Opción no válida. Inténtalo de nuevo.")
+
+def main():
+    # Funcion principal
+    productos = []  # Lista para almacenar productos
+    historial = []  # Lista para almacenar historial de productos eliminados
+    carrito = []    # Lista para el carrito de compras
+
+    while True:  # Bucle principal
+        perfil = input("Selecciona tu perfil (cliente/vendedor): ").strip().lower()  # Elegir perfil
+        if perfil == 'vendedor':
+            password = input("Introduce la contraseña del vendedor: ")  # Pedir contraseña
+            if password == "vendedor123":  # Contraseña para vendedor
+                print("Acceso concedido. Bienvenido vendedor.")
+                menu_vendedor(productos, historial)  # Menu vendedor
+            else:
+                print("Contraseña incorrecta. Intenta de nuevo.")
+        elif perfil == 'cliente':
+            print("Bienvenido cliente.")
+            menu_cliente(productos, carrito)  # Menu cliente
+        else:
+            print("Perfil no válido. Inténtalo de nuevo.")
+
+if __name__ == "__main__":
+    main()  # Inicia el programa
