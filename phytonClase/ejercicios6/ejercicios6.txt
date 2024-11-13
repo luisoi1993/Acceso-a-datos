@@ -1,0 +1,123 @@
+#1- Implementa un algoritmo que itere sobre una tupla dada y la muestre por pantalla.
+
+mi_tupla = (1, 2, 3, "cuatro", "cinco")
+
+print(mi_tupla)
+
+
+#2- Devolver la longitud de la tupla anterior.
+
+mi_tupla = (1, 2, 3, "cuatro", "cinco")
+
+longitud = len(mi_tupla)
+print("La longitud de la tupla es:", longitud)
+
+#3- Indicar si los elementos “cuatro”, “2” y 2 están en la tupla anterior
+
+mi_tupla = (1, 2, 3, "cuatro", "cinco")
+
+elementos_a_buscar = ["cuatro", "2", 2]
+
+for elemento in elementos_a_buscar:
+    if elemento in mi_tupla:
+        print(f"El elemento '{elemento}' está en la tupla.")
+    else:
+        print(f"El elemento '{elemento}' no está en la tupla.")
+
+
+#4- Igual que 3 pero que el valor a buscar sea leído por teclado.
+#Recuerda cuando usas input en Python, obtienes una cadena, sin importar si el usuario
+#ingresa un número o cualquier otro tipo de entrada. Por lo que es necesario distinguir si
+#lo que se ha introducido es, por ejemplo, un dígito (isdigit())
+
+mi_tupla = (1, 2, 3, "cuatro", "cinco")
+
+# Leer el valor desde el teclado
+valor = input("Introduce el valor a buscar en la tupla: ")
+
+# Verificar si el valor es un dígito
+if valor.isdigit():
+    # Convertir a entero si es un dígito
+    valor = int(valor)
+    
+# Comprobar si el valor está en la tupla
+if valor in mi_tupla:
+    print(f"El valor '{valor}' está en la tupla.")
+else:
+    print(f"El valor '{valor}' no está en la tupla.")
+
+
+    #5- Implementa en Python un algoritmo que reciba tres valores por teclado y los añade
+#a la tupla:
+
+#mi_tupla(x,y,z)
+#Imprime la tupla por pantalla.
+
+# Tupla original
+mi_tupla = (1, 2, 3, "cuatro", "cinco")
+
+# Leer tres valores desde el teclado
+valor1 = input("Introduce el primer valor: ")
+valor2 = input("Introduce el segundo valor: ")
+valor3 = input("Introduce el tercer valor: ")
+
+# Crear una nueva tupla con los valores añadidos
+mi_tupla = mi_tupla + (valor1, valor2, valor3)
+
+# Imprimir la nueva tupla
+print("La nueva tupla es:", mi_tupla)
+
+
+#6- Implementa un algoritmo que lea por teclado dos valores y los añada a una tupla
+#con el siguiente formato:
+#mi_tupla(a,x)
+
+#donde a es una letra y x un número.
+#Imprime la tupla.
+
+# Leer una letra desde el teclado
+a = input("Introduce una letra: ")
+
+# Leer un número desde el teclado y convertirlo a entero
+x = input("Introduce un número: ")
+
+# Verificar que 'x' es un dígito antes de convertirlo
+if x.isdigit():
+    x = int(x)
+else:
+    print("Error: el valor ingresado no es un número.")
+    x = None
+
+# Crear la tupla si el valor de 'x' es correcto
+if x is not None:
+    mi_tupla = (a, x)
+    print("La tupla es:", mi_tupla)
+
+#7- Implementa, usando un bucle for, la tupla ahora tenga el par de valores (a,b),
+#de forma que:
+
+#mi_tupla=((a,x),(b,y),(c,z))
+
+# Inicializamos una lista para almacenar los pares temporales
+pares = []
+
+# Pedimos los valores en un bucle for
+for i in range(3):
+    letra = input(f"Introduce la letra {i + 1}: ")
+    numero = input(f"Introduce el número {i + 1}: ")
+    
+    # Convertir 'numero' a entero si es un dígito
+    if numero.isdigit():
+        numero = int(numero)
+    else:
+        print("Error: el valor ingresado no es un número.")
+        break
+    
+    # Añadir el par (letra, numero) a la lista de pares
+    pares.append((letra, numero))
+
+# Convertir la lista de pares en una tupla
+mi_tupla = tuple(pares)
+
+# Imprimir la tupla resultante
+print("La tupla resultante es:", mi_tupla)
