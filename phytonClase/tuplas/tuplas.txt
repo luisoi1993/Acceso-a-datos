@@ -1,0 +1,110 @@
+"""1- Implementa un algoritmo que itere sobre una tupla dada y la muestre por pantalla.
+
+mi_tupla = (1, 2, 3, "cuatro", "cinco")"""
+
+
+mi_tupla = (1, 2, 3, "cuatro", "cinco")
+
+
+for elemento in mi_tupla:
+    print(elemento)
+
+
+#2- Devolver la longitud de la tupla anterior.
+
+
+mi_tupla = (1, 2, 3, "cuatro", "cinco")
+
+
+longitud = len(mi_tupla)
+
+
+print("La longitud de la tupla es:", longitud)
+
+#3- Indicar si los elementos “cuatro”, “2” y 2 están en la tupla anterior
+
+
+mi_tupla = (1, 2, 3, "cuatro", "cinco")
+
+
+elementos = ["cuatro", "2", 2]
+
+
+for elemento in elementos:
+    if elemento in mi_tupla:
+        print(f"El elemento '{elemento}' está en la tupla.")
+    else:
+        print(f"El elemento '{elemento}' no está en la tupla.")
+
+
+"""4- Igual que 3 pero que el valor a buscar sea leído por teclado.
+Recuerda cuando usas input en Python, obtienes una cadena, sin importar si el usuario
+ingresa un número o cualquier otro tipo de entrada. Por lo que es necesario distinguir si
+lo que se ha introducido es, por ejemplo, un dígito (isdigit())
+"""
+
+
+mi_tupla = (1, 2, 3, "cuatro", "cinco")
+
+valor = input("Introduce un valor para buscar en la tupla: ")
+
+# Convertimos a entero si es un dígito
+if valor.isdigit():
+    valor = int(valor)
+
+
+if valor in mi_tupla:
+    print(f"El valor '{valor}' está en la tupla.")
+else:
+    print(f"El valor '{valor}' no está en la tupla.")
+
+""5- Implementa en Python un algoritmo que reciba tres valores por teclado y los añade
+a la tupla:
+
+mi_tupla(x,y,z)
+Imprime la tupla por pantalla."""
+
+
+mi_tupla = (1, 2, 3, "cuatro", "cinco")
+
+
+x = input("Introduce el primer valor: ")
+y = input("Introduce el segundo valor: ")
+z = input("Introduce el tercer valor: ")
+
+# Creamos una nueva tupla añadiendo los valores ingresados
+mi_tupla = mi_tupla + (x, y, z)
+
+
+print("La tupla actualizada es:", mi_tupla)
+
+
+"""6- Implementa un algoritmo que lea por teclado dos valores y los añada a una tupla
+con el siguiente formato:
+mi_tupla(a,x)
+
+donde a es una letra y x un número.
+Imprime la tupla."""
+
+
+a = input("Introduce una letra: ")
+
+# Verificamos que el usuario haya ingresado una sola letra
+while not (a.isalpha() and len(a) == 1):
+    a = input("Por favor, introduce una letra válida: ")
+
+
+x = input("Introduce un número: ")
+
+# Verificamos que el valor ingresado sea un número
+while not x.isdigit():
+    x = input("Por favor, introduce un número válido: ")
+
+# Convertimos el número a un entero
+x = int(x)
+
+# Creamos la tupla
+mi_tupla = (a, x)
+
+# Mostramos la tupla
+print("La tupla creada es:", mi_tupla)
