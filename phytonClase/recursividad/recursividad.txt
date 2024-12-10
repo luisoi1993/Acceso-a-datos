@@ -1,0 +1,128 @@
+"""Para entender la recursividad, vamos a comprender las siguientes funciones matemáticas:
+1- Calcula el factorial de un número
+La formula para el calculo del factorial de un numero es N! = N * (N-1) .... 2 * 1.
+La representación recursiva es:
+
+Se puede mejorar desde el punto de vista de la programación si tenemos en cuenta
+que el caso base también puede ser si x=1=0, pero entonces el caso recursivo le
+tenemos que aumentar a x>1"""
+
+def factorial(x):
+    # caso base
+    if x == 0 or x == 1:
+        return 1
+    # caso recursivo
+    else:
+        return x * factorial(x - 1)
+
+
+numero = 5
+print(f"El factorial de {numero} es: {factorial(numero)}")
+
+
+"""2- Multiplicación de dos números mayores de cero
+De forma recursiva, se puede definir matemáticamente la multiplicación descrita
+como:
+
+0 si b=0
+axb=
+a + (a x (b-1)) si b>0
+
+Se puede mejorar teniendo en cuenta que a también pueda tomar el valor 0."""
+
+
+def multiplicacion(a, b):
+    # caso base
+    if b == 0 or a == 0:
+        return 0
+    # caso recursivo
+    else:
+        return a + multiplicacion(a, b - 1)
+
+
+a = 5
+b = 3
+print(f"El resultado de la multiplicación de {a} y {b} es: {multiplicacion(a, b)}")
+
+
+"""3- MCD de dos números (mayores de cero)(MCD=Máximo Común Divisor)
+El máximo común divisor (MCD) de dos números se resuelve de forma recursiva
+utilizando el algoritmo de Euclides:
+a si b=0
+
+MCD (a,b)=
+
+MCD(b, a mod b) si b>0
+
+En Python, el módulo se realiza mediante la operación %, el cual da el módulo o
+residuo de un número.
+Recuerda que MCD(0,0) = indeterminación.
+Si a=0, entonces el MCD es b."""
+
+def mcd(a, b):
+    # caso base: si b es 0, el MCD es a
+    if b == 0:
+        return a
+    # si a es 0, el MCD es b
+    elif a == 0:
+        return b
+    # caso recursivo: aplicar el algoritmo de Euclides
+    else:
+        return mcd(b, a % b)
+
+
+a = 48
+b = 18
+
+"""4- Exponente de dos números (n elevado a m)
+El exponente de dos números n elevado a m se puede expresar recursivamente como:
+
+1 si m=0
+nm=
+n x (nm-1) si m >0
+
+Recuerda que todo número elevado a 0 = 1; 0 elevado a cualquier número >0 es
+igual a 0; pero no se puede elevar a ningún número el cero, por lo que 0 elevado a 0
+es una indeterminación!!!
+"""
+
+def exponente(n, m):
+    # caso base: cualquier número elevado a 0 es 1
+    if m == 0:
+        return 1
+    # caso recursivo: n * (n^(m-1))
+    elif m > 0:
+        return n * exponente(n, m - 1)
+    # casos especiales
+    elif n == 0 and m == 0:
+        raise ValueError("0 elevado a 0 es indeterminado")
+    elif n == 0 and m > 0:
+        return 0
+
+
+n = 2
+m = 3
+print(f"{n} elevado a {m} es: {exponente(n, m)}")
+
+
+"""5- resta de dos números
+La resta de dos números a y b (mayores de 0 y a>b) se puede expresar
+recursivamente como:
+a si b=0
+
+resta(a,b)=
+
+resta(a-1,b-1)"""
+
+def resta(a, b):
+    # caso base: si b es 0, la resta es a
+    if b == 0:
+        return a
+    # caso recursivo: resta(a-1, b-1)
+    else:
+        return resta(a - 1, b - 1)
+
+
+a = 5
+b = 3
+print(f"La resta de {a} y {b} es: {resta(a, b)}")
