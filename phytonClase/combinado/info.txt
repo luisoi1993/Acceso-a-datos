@@ -1,0 +1,7 @@
+Nombre,Edad,Correo
+Ana,28,ana@email.com
+María,30,maria@email.com
+Luis,35,N/A
+Juan,25,juan@email.com
+Carlos,22,N/A
+Pedro,N/A,pedro@email.com

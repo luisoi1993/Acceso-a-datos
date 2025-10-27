@@ -1,0 +1,5 @@
+Esta es la primera línea.
+Esta es la segunda línea.
+¡Python facilita trabajar con archivos!
+Esta es una línea añadida en modo adición.
+Seguimos aprendiendo sobre archivos en Python.

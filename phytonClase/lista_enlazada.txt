@@ -1,0 +1,3 @@
+Nodo: 20, Anterior: None, Siguiente: 15
+Nodo: 15, Anterior: 20, Siguiente: 5
+Nodo: 5, Anterior: 15, Siguiente: None

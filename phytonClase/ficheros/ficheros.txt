@@ -1,0 +1,209 @@
+"""Ejercicio 1: Lectura de un archivo
+Crea un archivo de texto llamado archivo.txt y escribe algunas líneas de texto en él.
+Escribe un programa en Python que abra y lea el contenido del archivo en modo
+lectura (r) y lo imprima en la consola."""
+
+def leer_archivo():
+    try:
+        # abre el archivo archivo.txt en modo lectura
+        with open("archivo.txt", "r") as archivo:
+            contenido = archivo.read()  # lee el contenido completo del archivo
+            print("Contenido del archivo:")
+            print(contenido)  # muestra el contenido en la consola
+    except FileNotFoundError:
+        print("Error: El archivo 'archivo.txt' no existe.")  # maneja si el archivo no se encuentra
+    except Exception as e:
+        print(f"Se produjo un error inesperado: {e}")  # maneja otros errores inesperados
+
+
+leer_archivo()
+
+
+"""Ejercicio 2: Escritura en un archivo
+Escribe un programa que cree un nuevo archivo llamado nuevo.txt y escriba algunas
+líneas de texto en él en modo escritura (w).
+Abre el archivo en modo lectura (r) y muestra el contenido en la consola."""
+
+
+
+def escribir_y_leer_archivo():
+    try:
+        # crea un nuevo archivo llamado nuevo.txt y escribe texto en él
+        with open("nuevo.txt", "w") as archivo:
+            archivo.write("Esta es la primera línea.\n")
+            archivo.write("Esta es la segunda línea.\n")
+            archivo.write("¡Python facilita trabajar con archivos!\n")
+        print("Texto escrito exitosamente en 'nuevo.txt'.")
+
+        # abre el archivo en modo lectura y muestra su contenido
+        with open("nuevo.txt", "r") as archivo:
+            contenido = archivo.read()
+            print("\nContenido del archivo:")
+            print(contenido)
+
+    except Exception as e:
+        print(f"Se produjo un error: {e}")  # maneja cualquier error inesperado
+
+
+escribir_y_leer_archivo()
+
+
+"""Ejercicio 3: Agregar contenido a un archivo
+Añade más líneas de texto al archivo nuevo.txt en modo adición (a).
+Vuelve a abrir el archivo en modo lectura (r) y muestra el contenido en la consola."""
+
+def agregar_y_leer_archivo():
+    try:
+        # abre el archivo en modo adición (append) y añade más líneas
+        with open("nuevo.txt", "a") as archivo:
+            archivo.write("Esta es una línea añadida en modo adición.\n")
+            archivo.write("Seguimos aprendiendo sobre archivos en Python.\n")
+        print("Texto añadido exitosamente a 'nuevo.txt'.")
+
+        # abre el archivo en modo lectura y muestra su contenido
+        with open("nuevo.txt", "r") as archivo:
+            contenido = archivo.read()
+            print("\nContenido actualizado del archivo:")
+            print(contenido)
+
+    except Exception as e:
+        print(f"Se produjo un error: {e}")  # maneja cualquier error inesperado
+
+
+agregar_y_leer_archivo()
+
+
+"""Ejercicio 4: Modificación de un archivo
+Escribe un programa que abra el archivo nuevo.txt
+Dicho fichero tendrá escrito:
+
+Contenido del archivo 1.
+Contenido Modificado del archivo 2. Más contenido
+
+Utiliza las funciones .replace para cambiar la palabra “Contenido” por “Modificado”
+contenido_modificado = contenido.replace("Contenido", "Modificado")
+
+La salida por pantalla deberá ser:
+
+Contenido antes de la modificación:
+Contenido del archivo 1.
+Contenido modificado del archivo 2. Más contenido
+Contenido después de la modificación:
+Modificado del archivo 1.
+Modificado modificado del archivo 2. Más contenido
+
+Y la del fichero:
+
+Modificado del archivo 1.
+Modificado Modificado del archivo 2. Más contenido"""
+
+# abrimos el archivo en modo lectura
+with open("nuevo.txt", "r") as archivo:
+    # leemos el contenido del archivo y lo guardamos en una variable
+    contenido = archivo.read()
+
+# mostramos el contenido antes de la modificación
+print("contenido antes de la modificación:")
+print(contenido)
+
+# cambiamos la palabra "Contenido" por "Modificado" en el contenido
+contenido_modificado = contenido.replace("Contenido", "Modificado")
+
+# mostramos el contenido después de la modificación
+print("contenido después de la modificación:")
+print(contenido_modificado)
+
+# abrimos el archivo en modo escritura para sobrescribir el contenido
+with open("nuevo.txt", "w") as archivo:
+    # escribimos el contenido modificado en el archivo
+    archivo.write(contenido_modificado)
+
+
+"""Ejercicio 5: Combinación de archivos
+Desarrolla un algoritmo que genere dos archivos de texto, por ejemplo, archivo1.txt y
+archivo2.txt, con contenido diferente (una frase diferente cada uno)
+Escribe un programa que abra ambos archivos y combine su contenido en un nuevo
+archivo llamado combinado.txt y además lo muestre por pantalla.
+Puedes abrir varios ficheros a la vez:
+contenido1 = f1.read()
+contenido2 = f2.read()
+
+Y luego combinarlos:
+
+f_combinado.write(contenido1 + '\n' + contenido2)"""
+
+# primero creamos dos archivos de texto con contenido diferente
+with open("archivo1.txt", "w") as archivo1:
+    archivo1.write("este es el contenido del archivo 1.")
+
+with open("archivo2.txt", "w") as archivo2:
+    archivo2.write("este es el contenido del archivo 2.")
+
+# ahora abrimos los dos archivos para leer su contenido
+with open("archivo1.txt", "r") as f1, open("archivo2.txt", "r") as f2:
+    # leemos el contenido de ambos archivos
+    contenido1 = f1.read()
+    contenido2 = f2.read()
+
+# combinamos el contenido de ambos archivos en uno nuevo llamado combinado.txt
+with open("combinado.txt", "w") as f_combinado:
+    # escribimos el contenido de los dos archivos en el archivo combinado
+    f_combinado.write(contenido1 + '\n' + contenido2)
+
+# mostramos el contenido del archivo combinado por pantalla
+with open("combinado.txt", "r") as f_combinado:
+    print("contenido combinado:")
+    print(f_combinado.read())
+
+
+"""Ejercicio 6: Lectura y escritura simultánea
+Crea un programa que genere un archivo con el siguiente contenido:
+“Este archivo existe.
+Contiene algunas líneas de texto. en modo lectura y escritura simultánea."
+A continuación lo tiene que modificar añadiendo:
+“Añadiendo más líneas al contenido existente!
+Esto es una adición al archivo”
+Se tiene que quedar en el fichero grabado todos los mensajes y por pantalla
+visualizar, además de los mensajes que se han grabado en el fichero, lo que ha ido
+haciendo.
+Ejemplo de lo que se muestra por pantalla:
+Contenido antes de la modificación:
+Este archivo existe.
+Contiene algunas líneas de texto.
+Contenido después de la modificación:
+Este archivo existe.
+Contiene algunas líneas de texto.
+¡Añadiendo más líneas al contenido existente!
+Esto es una adición al archivo.
+
+Contenido del fichero:
+
+Este archivo existe.
+Contiene algunas líneas de texto.
+¡Añadiendo más líneas al contenido existente!
+Esto es una adición al archivo."""
+
+# primero creamos el archivo con el contenido inicial
+with open("archivo.txt", "w") as archivo:
+    archivo.write("Este archivo existe.\nContiene algunas líneas de texto.\n")
+
+# mostramos el contenido antes de la modificación
+with open("archivo.txt", "r") as archivo:
+    contenido = archivo.read()
+    print("contenido antes de la modificación:")
+    print(contenido)
+
+# ahora, modificamos el archivo añadiendo más contenido en modo lectura y escritura simultánea
+with open("archivo.txt", "a+") as archivo:
+    # nos aseguramos de mover el cursor al final del archivo antes de añadir el nuevo contenido
+    archivo.write("¡Añadiendo más líneas al contenido existente!\nEsto es una adición al archivo.\n")
+
+# mostramos el contenido después de la modificación
+with open("archivo.txt", "r") as archivo:
+    contenido_modificado = archivo.read()
+    print("contenido después de la modificación:")
+    print(contenido_modificado)
+
+# mostramos el contenido del archivo por pantalla
+print("\ncontenido del fichero:")
+print(contenido_modificado)

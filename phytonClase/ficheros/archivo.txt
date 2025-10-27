@@ -1,0 +1,4 @@
+Este archivo existe.
+Contiene algunas líneas de texto.
+¡Añadiendo más líneas al contenido existente!
+Esto es una adición al archivo.

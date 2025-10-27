@@ -1,0 +1,3 @@
+hola, este es un archivo de prueba para contar cuántas palabras tiene.
+puedes agregar más líneas y palabras para probar el programa.
+este archivo es un ejemplo sencillo para que funcione correctamente.
